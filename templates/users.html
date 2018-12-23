@@ -1,0 +1,13 @@
+{%extends "layout.html"%}
+
+{%block heading%}
+{%endblock%}
+{%block body%}
+<ul>
+    {%for user in users%}
+    <li>
+        {{user}}
+    </li>
+    {%endfor%}
+</ul>
+{%endblock%}

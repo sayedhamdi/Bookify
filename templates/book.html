@@ -1,0 +1,46 @@
+{%extends "layout.html"%}
+
+{%block heading%}
+{%endblock%}
+{%block body%}
+    <div class="row">
+        <div class="col">
+            <h1>
+                {{book.title}}
+
+            </h1>
+            <p>
+                {{book.author}}
+            </p>
+            <p>
+                written {{book.year}}
+            </p>
+            <p>
+                {{book.isbn}}
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>average rating on good read : <b>{{good_read}}</b></p>
+        </div>
+    </div>
+    {%if not has_commented%}
+    <div class="row">
+        <div class="col">
+            <form method="post" action="{{url_for('reviews',id=book.id)}}">
+                <input type="number" name="rate">
+                <input type="text" name="comment">
+                <input type="submit" value="submit">
+            </form>
+        </div>
+    </div>
+    {%endif%}
+    <ul>
+        {%for comment in comments%}
+        <li>{{comment.comment}}</li>    
+        {%endfor%}        
+    </ul>
+    
+    
+{%endblock%}
